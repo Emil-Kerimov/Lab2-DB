@@ -92,7 +92,11 @@ public class SchoolSearchApp extends JFrame {
                 break;
             case "G":
                 int grade = Integer.parseInt(parts[1].trim());
+                if (parts.length > 2 && parts[2].trim().equalsIgnoreCase("T")) {
+                outputArea.append(studentRepository.searchTeachersByGrade(grade));
+                } else {
                 outputArea.append(studentRepository.searchByGrade(grade));
+            }
                 break;
             case "B":
                 int bus = Integer.parseInt(parts[1].trim());
@@ -126,6 +130,7 @@ public class SchoolSearchApp extends JFrame {
                 .append("C:<Номер класу> - Пошук студентів за номером класу\n")
                 .append("C:<Номер класу>:T - Пошук викладача за номером класу\n")
                 .append("G:<Номер класу> - Пошук студентів за номером класу\n")
+                .append("G:<Номер класу>:T - Пошук студентів за номером класу\n")
                 .append("B:<Номер автобуса> - Пошук студентів за номером автобуса\n")
                 .append("I - Статистика (кількість студентів)\n")
                 .append("H - Допомога (інформація про доступні команди)\n")
